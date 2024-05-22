@@ -2,6 +2,6 @@
 
 
 Стек:
-Microsoft SQL Server
-pyQT5
+Microsoft SQL Server,
+,pyQT5
 pyodbc
