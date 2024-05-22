@@ -17,10 +17,38 @@ def connectDB():
 connection = connectDB()
 cursor = connection.cursor()
 
-def findEmployee():
-    SQLQUERRY = """SELECT *
-    FROM Сотрудник"""
-    rows = connection.cursor().execute(SQLQUERRY).fetchall()
+def findEmployee(data):
+    if(data[0] == "id_сотрудника"):
+        SQLQUERRY = f"""SELECT *
+        FROM Сотрудник
+        WHERE {data[0]} = {data[1]}"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif (data[0] == "НаименованиеОтделение"):
+        print(9)
+        SQLQUERRY = f"""SELECT *
+                FROM Сотрудник
+                WHERE id_отделения = (SELECT id_отделения
+                FROM Отделение
+                WHERE Отделение.Наименование = N'{data[1]}')"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif(data[0] == "НаименованиеДолжность"):
+        print(9)
+        SQLQUERRY = f"""SELECT *
+        FROM Сотрудник
+        WHERE id_должности = (SELECT id_должности
+        FROM Должность
+        WHERE Должность.Наименование = N'{data[1]}')"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif(data[0] == "Наименование"):
+        SQLQUERRY = f"""SELECT *
+            FROM Сотрудник
+            WHERE {data[0]} = {data[1]}"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif (data[0] == "ФИО"):
+        SQLQUERRY = f"""SELECT *
+                FROM Сотрудник
+                WHERE Фамилия = N'{data[1]}' and Имя = N'{data[2]}' and Отчество = N'{data[3]}'"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
     return rows
 
 def findEmployeeColumns():
@@ -30,9 +58,6 @@ def findEmployeeColumns():
 
     return list
 
-
-
-findEmployeeColumns()
 
 
 
