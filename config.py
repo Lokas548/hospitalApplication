@@ -59,5 +59,31 @@ def findEmployeeColumns():
     return list
 
 
+def findPatient(data):
+    if(data[0] == "id_пациента"):
+        SQLQUERRY = f"""SELECT *
+        FROM Пациент
+        WHERE {data[0]} = {data[1]}"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif (data[0] == "ФИО"):
+        SQLQUERRY = f"""SELECT *
+                FROM Пациент
+                WHERE Фамилия = N'{data[1]}' and Имя = N'{data[2]}' and Отчество = N'{data[3]}'"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    elif (data[0] == "Номер_полиса"):
+        SQLQUERRY = f"""SELECT *
+            FROM Пациент
+            WHERE {data[0]} = '{data[1]}'"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    return rows
+
+def findPatientColumns():
+    list = []
+    for row in cursor.columns(table='Пациент'):
+        list.append(row.column_name)
+
+    return list
+
+
 
 

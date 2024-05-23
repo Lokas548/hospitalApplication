@@ -4,6 +4,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from config import connectDB
 from config import findEmployeeColumns
 from config import findEmployee
+from config import findPatient
+from config import findPatientColumns
 import sys
 
 
@@ -98,46 +100,83 @@ class Ui_MainWindow(object):
 
         #Все что связанно с поиском сотрудников
         self.findEmploye.clicked.connect(self.employeeDrawResult)
-    try:
-        def employeeDrawResult(self):
-            dataTypeArr = []
-            empInput = self.employeeInput.text()
-            #Done
-            if(self.employeeId.isChecked()):
-                dataTypeArr.append("id_сотрудника")
-                dataTypeArr.append(empInput)
-                rows = findEmployee(dataTypeArr)
-            #Done
-            elif(self.employeeDepartment.isChecked()):
-                dataTypeArr.append("НаименованиеОтделение")
-                dataTypeArr.append(str(empInput))
-                rows = findEmployee(dataTypeArr)
-            #Done
-            elif(self.employeePosition.isChecked()):
-                dataTypeArr.append("НаименованиеДолжность")
-                dataTypeArr.append(str(empInput))
-                rows = findEmployee(dataTypeArr)
-            elif (self.employeeSurname.isChecked()):
-                dataTypeArr.append("ФИО")
-                fio_parts = empInput.split(" ")
-                dataTypeArr.append(fio_parts[0])
-                dataTypeArr.append(fio_parts[1])
-                dataTypeArr.append(fio_parts[2])
-                print(dataTypeArr[1],dataTypeArr[2],dataTypeArr[3])
-                rows = findEmployee(dataTypeArr)
+        self.findPatient.clicked.connect(self.patientDrawResult)
 
-            column_names = findEmployeeColumns()
-            self.querryResult.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
-            self.querryResult.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
+    def employeeDrawResult(self):
+        dataTypeArr = []
+        empInput = self.employeeInput.text()
+        #Done
+        if(self.employeeId.isChecked()):
+            dataTypeArr.append("id_сотрудника")
+            dataTypeArr.append(empInput)
+            rows = findEmployee(dataTypeArr)
+        #Done
+        elif(self.employeeDepartment.isChecked()):
+            dataTypeArr.append("НаименованиеОтделение")
+            dataTypeArr.append(str(empInput))
+            rows = findEmployee(dataTypeArr)
+        #Done
+        elif(self.employeePosition.isChecked()):
+            dataTypeArr.append("НаименованиеДолжность")
+            dataTypeArr.append(str(empInput))
+            rows = findEmployee(dataTypeArr)
+        elif (self.employeeSurname.isChecked()):
+            dataTypeArr.append("ФИО")
+            fio_parts = empInput.split(" ")
+            dataTypeArr.append(fio_parts[0])
+            dataTypeArr.append(fio_parts[1])
+            dataTypeArr.append(fio_parts[2])
+            print(dataTypeArr[1],dataTypeArr[2],dataTypeArr[3])
+            rows = findEmployee(dataTypeArr)
 
-            self.querryResult.setHorizontalHeaderLabels(column_names)
+        column_names = findEmployeeColumns()
+        self.querryResult.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
+        self.querryResult.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
 
-            for i, row in enumerate(rows):
-                for j, value in enumerate(row):
-                    item = QtWidgets.QTableWidgetItem(str(value))
-                    self.querryResult.setItem(i, j, item)
-    except Exception as e:
-        print("err")
+        self.querryResult.setHorizontalHeaderLabels(column_names)
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.querryResult.setItem(i, j, item)
+
+    def patientDrawResult(self):
+        dataTypeArr1 = []
+        patientInput = self.patientInput.text()
+        print(1)
+        #Done
+        if(self.patientId.isChecked()):
+            dataTypeArr1.append("id_пациента")
+            dataTypeArr1.append(patientInput)
+            rows = findPatient(dataTypeArr1)
+        #Done
+        elif (self.patientSurname.isChecked()):
+            print(12)
+            dataTypeArr1.append("ФИО")
+            fio_parts = patientInput.split(" ")
+            dataTypeArr1.append(fio_parts[0])
+            dataTypeArr1.append(fio_parts[1])
+            dataTypeArr1.append(fio_parts[2])
+            print(dataTypeArr1[1],dataTypeArr1[2],dataTypeArr1[3])
+            rows = findPatient(dataTypeArr1)
+        #Done
+        if (self.patientPolicy.isChecked()):
+            dataTypeArr1.append("Номер_полиса")
+            dataTypeArr1.append(patientInput)
+            rows = findPatient(dataTypeArr1)
+        #Done
+
+        column_names = findPatientColumns()
+        self.querryResult.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
+        self.querryResult.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
+
+        self.querryResult.setHorizontalHeaderLabels(column_names)
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.querryResult.setItem(i, j, item)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -165,4 +204,3 @@ def application():
 
     main_win.show()
     sys.exit(app.exec_())
-
