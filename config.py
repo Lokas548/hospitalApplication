@@ -3,7 +3,7 @@ import pyodbc
 def connectDB():
     connectionString = (
         r'DRIVER={ODBC Driver 17 for SQL Server};'
-        r'SERVER=DESKTOP-C53MJSE;'
+        r'SERVER=KOMPUTER;'
         r'DATABASE=Больница;'
         r'Trusted_Connection=yes;')
 
@@ -57,7 +57,6 @@ def findEmployeeColumns():
         list.append(row.column_name)
 
     return list
-
 
 def findPatient(data):
     if(data[0] == "id_пациента"):
