@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1092</width>
-    <height>786</height>
+    <width>910</width>
+    <height>765</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(128,128,128);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableWidget" name="querryResult">
@@ -23,58 +26,79 @@
       <height>481</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;
+</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="findEmploye">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>250</x>
       <y>650</y>
       <width>151</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #8d917a;</string>
+    </property>
     <property name="text">
-     <string>Найти сотрудника</string>
+     <string>Найти </string>
     </property>
    </widget>
    <widget class="QPushButton" name="findPatient">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>680</x>
       <y>650</y>
       <width>151</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #8d917a;</string>
+    </property>
     <property name="text">
-     <string>Найти Пациента</string>
+     <string>Найти </string>
     </property>
    </widget>
    <widget class="QLineEdit" name="employeeInput">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>80</x>
       <y>650</y>
       <width>171</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #8d917a;
+border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="patientInput">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>510</x>
       <y>650</y>
       <width>171</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #8d917a;
+border: 1px solid black;</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>520</y>
+      <x>150</x>
+      <y>530</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -82,12 +106,15 @@
     <property name="text">
      <string>Фильтр поиска</string>
     </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>520</y>
+      <x>640</x>
+      <y>530</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -99,7 +126,7 @@
    <widget class="QRadioButton" name="employeeSurname">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>90</x>
       <y>560</y>
       <width>95</width>
       <height>20</height>
@@ -112,7 +139,7 @@
    <widget class="QRadioButton" name="employeeId">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>90</x>
       <y>580</y>
       <width>95</width>
       <height>20</height>
@@ -125,7 +152,7 @@
    <widget class="QRadioButton" name="employeeDepartment">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>90</x>
       <y>600</y>
       <width>95</width>
       <height>20</height>
@@ -138,7 +165,7 @@
    <widget class="QRadioButton" name="patientSurname">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>510</x>
       <y>560</y>
       <width>95</width>
       <height>20</height>
@@ -151,7 +178,7 @@
    <widget class="QRadioButton" name="patientId">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>510</x>
       <y>580</y>
       <width>95</width>
       <height>20</height>
@@ -164,7 +191,7 @@
    <widget class="QRadioButton" name="patientPolicy">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>510</x>
       <y>600</y>
       <width>111</width>
       <height>20</height>
@@ -177,8 +204,8 @@
    <widget class="QRadioButton" name="employeePosition">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>560</y>
+      <x>210</x>
+      <y>600</y>
       <width>95</width>
       <height>20</height>
      </rect>
@@ -192,7 +219,7 @@
      <rect>
       <x>0</x>
       <y>520</y>
-      <width>351</width>
+      <width>531</width>
       <height>16</height>
      </rect>
     </property>
@@ -203,7 +230,7 @@
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>460</x>
       <y>530</y>
       <width>20</width>
       <height>221</height>
@@ -216,7 +243,7 @@
    <widget class="Line" name="line_3">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>530</x>
       <y>520</y>
       <width>381</width>
       <height>16</height>
@@ -229,14 +256,47 @@
    <widget class="Line" name="line_4">
     <property name="geometry">
      <rect>
-      <x>720</x>
+      <x>840</x>
       <y>530</y>
-      <width>20</width>
-      <height>221</height>
+      <width>141</width>
+      <height>231</height>
      </rect>
     </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>500</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 19px
+</string>
+    </property>
+    <property name="text">
+     <string>Пациенты</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>500</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size:19px</string>
+    </property>
+    <property name="text">
+     <string>Сотрудники</string>
     </property>
    </widget>
   </widget>
@@ -245,8 +305,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1092</width>
-     <height>26</height>
+     <width>910</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
