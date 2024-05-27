@@ -141,6 +141,9 @@ class Ui_MainWindow(object):
             dataTypeArr.append(fio_parts[2])
             print(dataTypeArr[1],dataTypeArr[2],dataTypeArr[3])
             rows = findEmployee(dataTypeArr)
+        else:
+            dataTypeArr.append("*")
+            rows = findEmployee(dataTypeArr)
 
         column_names = findEmployeeColumns()
         self.querryResult.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
@@ -173,9 +176,12 @@ class Ui_MainWindow(object):
             print(dataTypeArr1[1],dataTypeArr1[2],dataTypeArr1[3])
             rows = findPatient(dataTypeArr1)
         #Done
-        if (self.patientPolicy.isChecked()):
+        elif (self.patientPolicy.isChecked()):
             dataTypeArr1.append("Номер_полиса")
             dataTypeArr1.append(patientInput)
+            rows = findPatient(dataTypeArr1)
+        else:
+            dataTypeArr1.append("*")
             rows = findPatient(dataTypeArr1)
         #Done
 

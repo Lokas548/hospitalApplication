@@ -49,6 +49,10 @@ def findEmployee(data):
                 FROM Сотрудник
                 WHERE Фамилия = N'{data[1]}' and Имя = N'{data[2]}' and Отчество = N'{data[3]}'"""
         rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    if(data[0] == "*"):
+        SQLQUERRY = f"""SELECT *
+        FROM Сотрудник"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
     return rows
 
 def findEmployeeColumns():
@@ -73,6 +77,10 @@ def findPatient(data):
         SQLQUERRY = f"""SELECT *
             FROM Пациент
             WHERE {data[0]} = '{data[1]}'"""
+        rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    if (data[0] == "*"):
+        SQLQUERRY = f"""SELECT *
+            FROM Пациент"""
         rows = connection.cursor().execute(SQLQUERRY).fetchall()
     return rows
 

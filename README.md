@@ -9,8 +9,7 @@ pyodbc
 GUI
 
 
-![ph](https://github.com/Lokas548/hospitalDB_Application/assets/90204227/9e7900ee-773e-4ffe-beae-35ecc763cce0)
-
+![image](https://github.com/Lokas548/hospitalDB_Application/assets/90204227/b70d3412-fe59-448e-80a2-3c0e493c9674)
 
 
 22.05.24
