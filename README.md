@@ -9,7 +9,7 @@ pyodbc
 GUI
 
 
-![image](https://github.com/Lokas548/hospitalDB_Application/assets/90204227/b70d3412-fe59-448e-80a2-3c0e493c9674)
+![image](https://github.com/Lokas548/hospitalDB_Application/assets/90204227/c3fb46ed-78c3-4512-b2b4-2ad87e0d497a)
 
 
 22.05.24
@@ -17,3 +17,8 @@ GUI
 
 23.05.24
 Добавил поиск ПАЦИЕНТОВ по ФИО,id,Номеру полиса
+
+27.05.24
+Показать всех с помощью "*"
+             .Изменен gui
+
