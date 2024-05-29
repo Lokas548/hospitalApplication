@@ -17,7 +17,7 @@
    <string notr="true">background-color:#a68b8b</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="admin">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -34,7 +34,7 @@
      <string>Администратор</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="update">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -51,7 +51,7 @@
      <string>Запись на прием</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="addEmpOrPatient">
     <property name="geometry">
      <rect>
       <x>400</x>
