@@ -1,4 +1,5 @@
-from config import  connectDB
-from gui import *
+from src.config import  connectDB
+from gui.appointment import mainWinCall
 
-application()
+
+mainWinCall()
