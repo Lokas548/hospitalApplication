@@ -111,7 +111,6 @@ class Ui_Admin(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
         #Все что связанно с поиском сотрудников
         self.findEmploye.clicked.connect(self.employeeDrawResult)
         self.findPatient.clicked.connect(self.patientDrawResult)
@@ -217,6 +216,7 @@ class Ui_Admin(object):
         self.label_4.setText(_translate("MainWindow", "Сотрудники"))
 
     def callAdmin(self):
+        print(1)
         app = QApplication(sys.argv)
         main_win = QMainWindow()
         win = Ui_Admin()
@@ -224,8 +224,8 @@ class Ui_Admin(object):
         connectDB()
 
         main_win.show()
-
         sys.exit(app.exec_())
+
 
 
 

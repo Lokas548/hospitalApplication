@@ -71,21 +71,14 @@ class Ui_Auth(QtWidgets.QMainWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
         self.admin.clicked.connect(self.openAdmin)
     def openAdmin(self):
+        self.window = QtWidgets.QMainWindow()
         self.adm = Ui_Admin()
-        self.adm.show()
-
-    # def appointmetCall(self):
-    #     a = QApplication(sys.argv)
-    #     auth = QMainWindow()
-    #     win_auth = Ui_Auth()
-    #     win_auth.setupUi(auth)
-    #     auth.show()
-
-
-
-
+        self.adm.setupUi(self.window)
+        self.window.show()
+    #important
 
 
     def retranslateUi(self, MainWindow):
@@ -103,5 +96,5 @@ def mainWinCall():
     window.setupUi(main_window)
     main_window.show()
 
-
     sys.exit(app.exec_())
+
