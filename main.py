@@ -1,5 +1,5 @@
 from src.config import  connectDB
-from gui.appointment import mainWinCall
+from gui.auth import mainWinCall
 
 
 mainWinCall()
