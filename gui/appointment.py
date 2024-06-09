@@ -1,5 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from src.config import getScheudle
+from src.config import findEmployeeColumns
+from src.config import findScheudleColumns
+from src.config import insertAppoint
 
+#global variables
+appointmentID = 0
 
 class Ui_Appointment(object):
     def setupUi(self, MainWindow):
@@ -11,6 +17,7 @@ class Ui_Appointment(object):
         self.receptionTable = QtWidgets.QTableWidget(self.centralwidget)
         self.receptionTable.setGeometry(QtCore.QRect(0, 70, 551, 321))
         self.receptionTable.setStyleSheet("color: white")
+        self.receptionTable.setStyleSheet("font-color: black")
         self.receptionTable.setObjectName("receptionTable")
         self.receptionTable.setColumnCount(0)
         self.receptionTable.setRowCount(0)
@@ -56,12 +63,53 @@ class Ui_Appointment(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.findDoctor.clicked.connect(self.showScheudle)
+        self.appointButton.clicked.connect(self.updateAppointTable)
+        self.receptionTable.cellClicked.connect(self.getData)
+
+    def getData(self):
+         global appointmentID
+         current_row = self.receptionTable.currentRow()
+         current_column = self.receptionTable.currentColumn()
+         insertID = self.receptionTable.item(current_row,current_column)
+         appointmentID = insertID.text()
+
+    def showScheudle(self):
+        nameArr = []
+        empInput = self.doctorInput.text()
+        fio_parts = empInput.split(" ")
+        nameArr.append(fio_parts[0])
+        nameArr.append(fio_parts[1])
+        nameArr.append(fio_parts[2])
+        rows = getScheudle(nameArr)
+
+        column_names = findScheudleColumns()
+        self.receptionTable.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
+        self.receptionTable.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
+
+        self.receptionTable.setHorizontalHeaderLabels(column_names)
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.receptionTable.setItem(i, j, item)
+    def updateAppointTable(self):
+        nameArr = []
+        patientInput = self.patientInput.text()
+        fio_parts = patientInput.split(" ")
+        nameArr.append(fio_parts[0])
+        nameArr.append(fio_parts[1])
+        nameArr.append(fio_parts[2])
+        insertAppoint(nameArr,appointmentID)
+
+
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "Доступные приемы"))
         self.findDoctor.setText(_translate("MainWindow", "Найти"))
-        self.label_2.setText(_translate("MainWindow", "ФИО Пациента"))
+        self.label_2.setText(_translate("MainWindow", "ФИО Сотрудника"))
         self.label_3.setText(_translate("MainWindow", "Запись"))
         self.appointButton.setText(_translate("MainWindow", "Добавить"))
-        self.label_4.setText(_translate("MainWindow", "ФИО Сотрудника"))
+        self.label_4.setText(_translate("MainWindow", "ФИО Пациента"))

@@ -91,6 +91,30 @@ def findPatientColumns():
 
     return list
 
+def findScheudleColumns():
+    list = []
+    for row in cursor.columns(table='Прием'):
+        list.append(row.column_name)
+
+    return list
+
+def getScheudle(data):
+    SQLQUERRY = f"""SELECT *
+                   FROM Прием
+                   WHERE Прием.id_сотрудника = (SELECT id_сотрудника
+							FROM Сотрудник
+							WHERE Фамилия = N'{data[0]}' AND Имя = N'{data[1]}' AND Отчество = N'{data[2]}')
+	AND id_пациента IS NULL
+    """
+    rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    return rows
+
+def insertAppoint(data,id):
+    SQLQUERRY = f"""execute [Записать_на_прием] {id},{data[0]},{data[1]},{data[2]}"""
+    rows = connection.cursor().execute(SQLQUERRY)
+    connection.commit()
+    return rows
+
 
 
 
