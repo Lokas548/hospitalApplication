@@ -8,6 +8,7 @@ from src.config import findPatient
 from src.config import findPatientColumns
 from gui.admin import Ui_Admin
 from gui.appointment import Ui_Appointment
+from gui.insert import Ui_Insert
 
 import sys
 
@@ -17,7 +18,7 @@ class Ui_Auth(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(654, 562)
-        MainWindow.setStyleSheet("background-color:#a68b8b")
+        MainWindow.setStyleSheet("background-color: #AAF0D1")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.admin = QtWidgets.QPushButton(self.centralwidget)
@@ -75,6 +76,7 @@ class Ui_Auth(QtWidgets.QMainWindow):
 
         self.admin.clicked.connect(self.openAdmin)
         self.update.clicked.connect(self.openApointment)
+        self.addEmpOrPatient.clicked.connect(self.openInsert)
     def openAdmin(self):
         self.window = QtWidgets.QMainWindow()
         self.adm = Ui_Admin()
@@ -85,6 +87,12 @@ class Ui_Auth(QtWidgets.QMainWindow):
     def openApointment(self):
         self.window = QtWidgets.QMainWindow()
         self.adm = Ui_Appointment()
+        self.adm.setupUi(self.window)
+        self.window.show()
+
+    def openInsert(self):
+        self.window = QtWidgets.QMainWindow()
+        self.adm = Ui_Insert()
         self.adm.setupUi(self.window)
         self.window.show()
 
