@@ -18,28 +18,26 @@ class Ui_Auth(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(654, 562)
-        MainWindow.setStyleSheet("background-color: #AAF0D1")
+        MainWindow.setStyleSheet("background-color: rgb(128,128,128);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.admin = QtWidgets.QPushButton(self.centralwidget)
         self.admin.setGeometry(QtCore.QRect(120, 240, 121, 31))
-        self.admin.setStyleSheet("background-color: #ffc4c4\n"
-"")
+        self.admin.setStyleSheet("background-color: #8d917a;")
         self.admin.setObjectName("admin")
         self.update = QtWidgets.QPushButton(self.centralwidget)
         self.update.setGeometry(QtCore.QRect(260, 240, 121, 31))
-        self.update.setStyleSheet("background-color: #ffc4c4\n"
-"")
+        self.update.setStyleSheet("background-color: #8d917a;")
         self.update.setObjectName("update")
         self.addEmpOrPatient = QtWidgets.QPushButton(self.centralwidget)
         self.addEmpOrPatient.setGeometry(QtCore.QRect(400, 240, 151, 31))
-        self.addEmpOrPatient.setStyleSheet("background-color: #ffc4c4\n"
-"")
+        self.addEmpOrPatient.setStyleSheet("background-color: #8d917a;\n"
+                                           "")
         self.addEmpOrPatient.setObjectName("addEmpOrPatient")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(250, 130, 181, 41))
         self.label.setStyleSheet("font-size: 19px\n"
-"")
+                                 "")
         self.label.setObjectName("label")
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(80, 110, 20, 271))
@@ -57,7 +55,7 @@ class Ui_Auth(QtWidgets.QMainWindow):
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.line_4 = QtWidgets.QFrame(self.centralwidget)
-        self.line_4.setGeometry(QtCore.QRect(570, 110, 20, 271))
+        self.line_4.setGeometry(QtCore.QRect(570, 110, 20, 261))
         self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
