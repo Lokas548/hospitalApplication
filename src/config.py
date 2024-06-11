@@ -113,7 +113,6 @@ def insertAppoint(data,id):
     SQLQUERRY = f"""execute [Записать_на_прием] {id},{data[0]},{data[1]},{data[2]}"""
     rows = connection.cursor().execute(SQLQUERRY)
     connection.commit()
-    print('suck')
     return rows
 
 # def inserEmployee(data):
