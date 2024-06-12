@@ -24,7 +24,6 @@ def findEmployee(data):
         WHERE {data[0]} = {data[1]}"""
         rows = connection.cursor().execute(SQLQUERRY).fetchall()
     elif (data[0] == "НаименованиеОтделение"):
-        print(9)
         SQLQUERRY = f"""SELECT *
                 FROM Сотрудник
                 WHERE id_отделения = (SELECT id_отделения
@@ -32,7 +31,6 @@ def findEmployee(data):
                 WHERE Отделение.Наименование = N'{data[1]}')"""
         rows = connection.cursor().execute(SQLQUERRY).fetchall()
     elif(data[0] == "НаименованиеДолжность"):
-        print(9)
         SQLQUERRY = f"""SELECT *
         FROM Сотрудник
         WHERE id_должности = (SELECT id_должности
@@ -111,13 +109,21 @@ def getScheudle(data):
 
 def insertAppoint(data,id):
     SQLQUERRY = f"""execute [Записать_на_прием] {id},{data[0]},{data[1]},{data[2]}"""
-    rows = connection.cursor().execute(SQLQUERRY)
+    append = connection.cursor().execute(SQLQUERRY)
     connection.commit()
-    return rows
+    return append
 
-# def inserEmployee(data):
-#     SQLQUERRY = f'''execute [Добавить_сотрудника] {data[0]},{data[1]},{data[2]},{}{}{}{}'''
+def insertEmployee(data):
+    SQLQUERRY = f'''execute [Добавить_сотрудника] {data[0]},{data[1]},{data[2]},{data[3]},{data[4]},
+    {data[5]},{data[6]},{data[7]},{data[8]},{data[9]}'''
+    append = connection.cursor().execute(SQLQUERRY)
+    connection.commit()
+    return append
 
-
+def insertPatient(data):
+    SQLQUERRY = f'''execute [Добавить_пациента] {data[0]},{data[1]},{data[2]},{data[3]},{data[4]},{data[5]},{data[6]},{data[7]}'''
+    append = connection.cursor().execute(SQLQUERRY)
+    connection.commit()
+    return append
 
 

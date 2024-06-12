@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+from datetime import date
+from src.config import insertEmployee
+from src.config import insertPatient
 class Ui_Insert(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -169,25 +170,33 @@ class Ui_Insert(object):
 
     def employeeButton(self):
         data = []
+        today = date.today()
+        born = self.employeeBirth.text().split('.')
         fullname = self.employeeName.text().split(' ')
         data.extend(fullname)
-        data.append(self.employeeBirth.text())
+        data.append(today.year - int(born[2]) - ((today.month, today.day) < (int(born[1]), int(born[0]))))
         data.append(self.employeeAddress.text())
         data.append(self.employeeEmail.text())
+        data.append(self.employeePhoneNumber.text())
         data.append(self.employeeDepartment.text())
         data.append(self.employeePosition.text())
         data.append(self.employeeSalary.text())
-        data.append(self.employeePhoneNumber.text())
         print(data)
+        insertEmployee(data)
 
 
     def patientButton(self):
-       name = self.patientName.text()
-       birth = self.patientBirth.text()
-       address = self.patientAddress.text()
-       email = self.patientEmail.text()
-       phoneNumber = self.patientPhoneNumber.text()
-       policy = self.patientPolicy.text()
+       data = []
+       today = date.today()
+       born = self.patientBirth.text().split('.')
+       fullname = self.patientName.text().split(' ')
+       data.extend(fullname)
+       data.append(self.patientAddress.text())
+       data.append(today.year - int(born[2]) - ((today.month, today.day) < (int(born[1]), int(born[0]))))
+       data.append(self.patientPhoneNumber.text())
+       data.append(self.patientEmail.text())
+       data.append(self.patientPolicy.text())
+       insertPatient(data)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -199,9 +208,9 @@ class Ui_Insert(object):
         self.label_6.setText(_translate("MainWindow", "Отделение"))
         self.label_7.setText(_translate("MainWindow", "Должность"))
         self.label_8.setText(_translate("MainWindow", "Зарплата"))
-        self.label_9.setText(_translate("MainWindow", "Номер телефона"))
+        self.label_9.setText(_translate("MainWindow", "Новый сотрудник"))
         self.employeeAddButton.setText(_translate("MainWindow", "Добавить"))
-        self.label_10.setText(_translate("MainWindow", "Новый сотрудник"))
+        self.label_10.setText(_translate("MainWindow", "Новый пациент"))
         self.patientAddButton.setText(_translate("MainWindow", "Добавить"))
         self.label_11.setText(_translate("MainWindow", "ФИО"))
         self.label_12.setText(_translate("MainWindow", "Дата рождения"))
@@ -209,4 +218,4 @@ class Ui_Insert(object):
         self.label_14.setText(_translate("MainWindow", "Номер телефона"))
         self.label_16.setText(_translate("MainWindow", "Электронная почта"))
         self.label_17.setText(_translate("MainWindow", "Номер полиса"))
-        self.label_15.setText(_translate("MainWindow", "Новый пациент"))
+        self.label_15.setText(_translate("MainWindow", "Номер телефона"))
