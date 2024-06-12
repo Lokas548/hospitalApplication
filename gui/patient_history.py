@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from src.config import patientHistory
+from src.config import patientSickDays
 
 class Ui_PatientHistory(object):
     def setupUi(self, MainWindow):
@@ -58,8 +59,32 @@ class Ui_PatientHistory(object):
         self.showResult.clicked.connect(self.getPatientId)
 
     def getPatientId(self):
-        id = self.patientId.text()
-        print('xoi')
+        patId = self.patientId.text()
+        rows = patientHistory(patId)
+
+
+        column_names = ['Диагноз','Дата_приема','Врач','Лечение']
+        self.diseasesTable.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
+        self.diseasesTable.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
+
+        self.diseasesTable.setHorizontalHeaderLabels(column_names)
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.diseasesTable.setItem(i, j, item)
+
+        rows = patientSickDays(patId)
+        column_names = ['Дата_начала','Дата_окончания','Открывший_врач','Закрывший_врач','Дата_приема']
+        self.sickDaysTable.setRowCount(len(rows))  # Устанавливаем количество строк в таблице
+        self.sickDaysTable.setColumnCount(len(column_names))  # Устанавливаем количество столбцов в таблице
+
+        self.sickDaysTable.setHorizontalHeaderLabels(column_names)
+
+        for i, row in enumerate(rows):
+            for j, value in enumerate(row):
+                item = QtWidgets.QTableWidgetItem(str(value))
+                self.sickDaysTable.setItem(i, j, item)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

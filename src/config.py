@@ -126,4 +126,15 @@ def insertPatient(data):
     connection.commit()
     return append
 
+def patientHistory(id):
+    SQLQUERRY = f'''SELECT * FROM [История_болезней] ({id})'''
+    rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    return rows
+
+def patientSickDays(id):
+    SQLQUERRY = f'''SELECT * FROM [Больничные_Пациента]({id})'''
+    rows = connection.cursor().execute(SQLQUERRY).fetchall()
+    return rows
+
+
 
